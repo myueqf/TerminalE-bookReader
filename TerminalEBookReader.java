@@ -2,16 +2,17 @@ import java.io.*;
 import java.util.*;
 
 public class TerminalEBookReader {
-    private static final String BOOK_DIR = "book";
-    private static final int BOOKS_PER_PAGE = 9;
-    private static final int CHARS_PER_PAGE = 170;
+    private static final String BOOK_DIR = System.getProperty("user.home") + File.separator + "book";  // 文件夹路径
+    private static final int BOOKS_PER_PAGE = 9; // 列表行数
+    private static final int CHARS_PER_PAGE = 170; // 每页的字数
 
     public static void main(String[] args) throws IOException {
         File folder = new File(BOOK_DIR);
         File[] bookFiles = folder.listFiles((dir, name) -> name.endsWith(".txt"));
 
         if (bookFiles == null || bookFiles.length == 0) {
-            System.out.println("在'./book'目录中找不到txt或目录不存在");
+            String userhome = System.getProperty("user.home");
+            System.out.println("在'" + userhome + File.separator + "book'目录中找不到txt或目录不存在");
             return;
         }
 
