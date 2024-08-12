@@ -7,12 +7,13 @@ public class TerminalEBookReader {
     private static final int CHARS_PER_PAGE = 170; // 每页的字数
 
     public static void main(String[] args) throws IOException {
+        new File(System.getProperty("user.home") + File.separator + "book").mkdirs(); // 自动创建book文件
         File folder = new File(BOOK_DIR);
         File[] bookFiles = folder.listFiles((dir, name) -> name.endsWith(".txt"));
 
         if (bookFiles == null || bookFiles.length == 0) {
             String userhome = System.getProperty("user.home");
-            System.out.println("在'" + userhome + File.separator + "book'目录中找不到txt或目录不存在");
+            System.out.println("在'" + userhome + File.separator + "book'目录中找不到txt文件");
             return;
         }
 
